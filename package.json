@@ -1,0 +1,81 @@
+{
+  "private": true,
+  "name": "inline-llm-editor",
+  "displayName": "Inline LLM Editor",
+  "description": "A VSCode extension to modify highlighted code using LLMs with inline prompts.",
+  "version": "0.0.1",
+  "publisher": "YourPublisherName",
+  "author": {
+    "name": "Your Name"
+  },
+  "categories": ["Programming Languages", "Other"],
+  "engines": {
+    "vscode": "^1.95.0"
+  },
+  "activationEvents": ["onCommand:inlineLLMEditor.inlineInput"],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "inlineLLMEditor.inlineInput",
+        "title": "Inline LLM: Modify Selection",
+        "category": "LLM Editor"
+      },
+      {
+        "command": "inlineLLMEditor.acceptChange",
+        "title": "Accept Change"
+      },
+      {
+        "command": "inlineLLMEditor.rejectChange",
+        "title": "Reject Change"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "inlineLLMEditor.inlineInput",
+          "group": "navigation",
+          "when": "editorHasSelection"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "inlineLLMEditor.inlineInput",
+        "key": "ctrl+k",
+        "when": "editorTextFocus && editorHasSelection"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "dependencies": {
+    "axios": "^1.5.0"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.95.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "@typescript-eslint/eslint-plugin": "^8.17.0",
+    "@typescript-eslint/parser": "^8.17.0",
+    "eslint": "^9.16.0",
+    "typescript": "^5.7.2",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/your-repo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/your-repo/issues"
+  },
+  "homepage": "https://github.com/yourusername/your-repo#readme",
+  "license": "MIT"
+}

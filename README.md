@@ -1,0 +1,1 @@
+###LLM Extension for Ollama and Vscode. Supports OPENAPI and Local Models. 
